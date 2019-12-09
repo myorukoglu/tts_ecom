@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-  before_action :categories, :brands
+  before_action :categories, :brands, :line_items
   
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
   def brands
     @brands = Product.pluck(:brand).sort.uniq
   end
-  
+
+  def line_items
+    @line_item_count = LineItem.all.sum(:quantity)
+  end
+
   protected
 
   def configure_permitted_parameters

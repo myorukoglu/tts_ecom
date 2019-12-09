@@ -49,9 +49,7 @@
           <%= link_to "Admin Products", products_path, class: "nav-link" %>
         </li>
       <%end%>
-      <li class="nav-item">
-        <%= link_to 'Cart', view_order_path, class: "nav-link" %>
-      </li>
+      
       <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Update Account", edit_user_registration_path(), class: "nav-link" %>
@@ -64,6 +62,14 @@
               <%= link_to "Sign In", new_user_session_path(), class: "nav-link" %>
             </li>
           <% end %>
+          <li class="nav-item">
+        <a href="<%=view_order_path%>" class="nav-link" >
+        Cart 
+        
+          <span class="badge badge-info"><%= @line_item_count %></span>
+        
+        </a>
+      </li>
     </ul>
   
     <%= yield %>
