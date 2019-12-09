@@ -17,9 +17,6 @@
   <div class="container">
       <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
         <%= link_to "Products", root_path, class: "nav-link" %>
       </li>
     <li class="nav-item dropdown">
@@ -47,9 +44,11 @@
             <% end %>
           </div>
       </li>
-      <li class="nav-item">
-        <%= link_to "Admin Products", products_path, class: "nav-link" %>
-      </li>
+      <% if user_signed_in? && current_user.admin? %>
+        <li class="nav-item">
+          <%= link_to "Admin Products", products_path, class: "nav-link" %>
+        </li>
+      <%end%>
       <li class="nav-item">
         <%= link_to 'Cart', view_order_path, class: "nav-link" %>
       </li>
