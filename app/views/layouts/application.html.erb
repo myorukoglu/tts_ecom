@@ -20,10 +20,35 @@
     <a class="nav-link active" href="#">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <%= link_to "Products", root_path, class: "nav-link" %>
+  </li>
+<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Brands
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% @brands.each do |brand| %>
+          <%= link_to brand, branding_path(brand: brand), class:"dropdown-item" %>
+        <% end %>
+      </div>
+  </li>
+  <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categories
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% @categories.each do |category| %>
+          <%= link_to category.name, categorical_path(category_id: category.id), class:"dropdown-item" %>
+        <% end %>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% @brands.each do |brand| %>
+          <%= link_to brand, branding_path(brand: brand), class:"dropdown-item" %>
+        <% end %>
+      </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+     <%= link_to "Admin Products", products_path, class: "nav-link" %>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

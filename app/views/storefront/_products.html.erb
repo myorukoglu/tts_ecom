@@ -1,0 +1,38 @@
+<div style="display: flex">
+  <% @products.each do |product| %>
+    <div class="card" style="width: 18rem;margin: 10px;">
+      <div class="card-header">
+        <%= link_to product.name, product %>
+      </div>
+      <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
+      <%= image_tag product.image.url, class:"card-img-top" %>
+      </a>
+      <div class="card-body">
+      <p class="card-text"><%= number_to_currency product.price %></p>
+      <p class="card-text"><%= product.description %></p>
+      </div>
+      <div class="card-footer">
+        <p class="card-text"> <%= link_to product.brand, branding_path(brand: product.brand ) %></p>
+        <p class="card-text"> <%= link_to product.category.name, categorical_path(category_id: product.category.id ) %></p>
+      </div>
+    </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal_<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel"><%= link_to product.name, product %></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="modal-body">
+          <p class="card-text"><%= number_to_currency product.price %></p>
+          <p class="card-text"><%= product.description %></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+

@@ -3,11 +3,20 @@ class ApplicationController < ActionController::Base
   
   before_action :authenticate_user!
   
+  before_action :categories, :brands
+
+  def categories
+  	@categories = Category.order(:name)
+  end
+
+  def brands
+    @brands = Product.pluck(:brand).sort.uniq
+  end
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
 
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 end
