@@ -9,7 +9,7 @@ categories = Category.create([{name: "Computers"}, {name: "Smart Phones"},
   {name: "Televisions"}, {name: "Game Consoles"}, {name: "Video Games"},
   {name: "Appliances"}, {name: "Other"}])
 
-  if Product.all.length == 0
+  
     Product.create(:name => "Nokia Flip", 
       :price => 99.00, 
       :quantity => 123, 
@@ -18,7 +18,7 @@ categories = Category.create([{name: "Computers"}, {name: "Smart Phones"},
       :rating => 1, 
       :category_id => 2,
       )
-  end
-  if ! User.where(:role => "admin") 
+  
+  
     User.create(:name => "jane admin", :email => "a2@a.com", :password => "asdfASDF1", :role => "admin")
-  end
+  
