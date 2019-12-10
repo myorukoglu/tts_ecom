@@ -5,7 +5,7 @@
         <%= link_to product.name, product %>
       </div>
       <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
-      <%= image_tag product.image.url, class:"card-img-top" %>
+      <%= image_tag(product.image.url, class:"card-img-top") if product.image && product.image.url %>
       </a>
       <div class="card-body">
       <p class="card-text"><%= number_to_currency product.price %></p>
