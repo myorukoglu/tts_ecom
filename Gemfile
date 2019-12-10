@@ -50,3 +50,5 @@ gem 'cancancan'
 gem 'better_errors', group: :development
 gem 'binding_of_caller'
 gem 'pry', '~> 0.12.2'
+gem 'stripe'
+gem 'figaro'
